@@ -1,0 +1,16 @@
+version: "3"
+services:
+  coturn:
+    image: instrumentisto/coturn
+    container_name: coturn
+    ports:
+      - "3478:3478"
+      - "3478:3478/udp"
+      - "5349:5349"
+      - "5349:5349/udp"
+    environment:
+      - REALM=localhost
+      - LISTENING_PORT=3478
+      - EXTERNAL_IP=127.0.0.1   # if testing locally; for public deployment set your public IP
+      # Use long-term credentials via env user and password if supported by the image (some images accept TURN_USER/TURN_PASS)
+    command: ["--no-stdout-log", "--verbose", "--lt-cred-mech", "--realm=localhost", "--listening-port=3478", "--verbose"]

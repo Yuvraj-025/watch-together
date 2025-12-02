@@ -1,0 +1,4 @@
+fastapi
+python-socketio[asyncio_server]
+uvicorn[standard]
+python-dotenv
