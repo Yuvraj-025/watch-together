@@ -7,11 +7,11 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y build-essential gcc curl && rm -rf /var/lib/apt/lists/*
 
 # Copy and install
-COPY backend/requirements.txt /app/requirements.txt
+COPY ./requirements.txt /app/requirements.txt
 RUN python -m pip install --upgrade pip
 RUN pip install --no-cache-dir -r /app/requirements.txt
 
-COPY backend /app
+COPY . /app
 
 # expose port
 EXPOSE 8000
